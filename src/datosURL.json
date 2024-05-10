@@ -1,0 +1,8 @@
+{
+    "loginDummy": "https://crisp-safely-molly.ngrok-free.app/api/login/user",
+    "CuentasDummy": "https://crisp-safely-molly.ngrok-free.app/api/cuentas/cuentasClient",
+    "saldosCuentasDummy": "https://crisp-safely-molly.ngrok-free.app/api/cuentas/saldoscuentasClient",
+    "transactionsTC": "https://crisp-safely-molly.ngrok-free.app/api/cuentas/transactionsT",
+    "cuentasCliente": "https://crisp-safely-molly.ngrok-free.app/api/cuentas/cuentasDebitar",
+    "tiposPagosTC": "https://crisp-safely-molly.ngrok-free.app/api/cuentas/posiblepagosTC"
+}
