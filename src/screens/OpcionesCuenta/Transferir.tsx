@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Modal, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { MenuComponent } from '../../components/Menu/MenuComponent';
 
@@ -16,10 +16,7 @@ export const Transferir = ({ navigation }: any) => {
   };
 
   return (
-    <View>
-      <TouchableOpacity onPress={toggleMenu}>
-        <Text>Presiona para transferir</Text>
-      </TouchableOpacity>
+
       <Modal
         animationType="fade"
         transparent={true}
@@ -61,8 +58,6 @@ export const Transferir = ({ navigation }: any) => {
           </View>
         </TouchableOpacity>
       </Modal>
-
-    </View>
   );
 };
 

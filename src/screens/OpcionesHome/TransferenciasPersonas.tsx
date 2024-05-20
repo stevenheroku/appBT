@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import MenuOptions from '../../components/MenuOpciones/MenuOptions';
 
 export const TransferenciasPersonas = ({navigation}: any) => {
   const handlePress = () => {
@@ -17,16 +18,9 @@ export const TransferenciasPersonas = ({navigation}: any) => {
   return (
   
         <View style={styles.container}>
-          <View style={styles.menu}>
-            <TouchableOpacity
-              activeOpacity={0.5}
-              onPress={() => navigation.goBack()}>
-              <Icon name="backspace-outline" size={30} color="#51AAA2" />
-            </TouchableOpacity>
-            <View>
-            </View>
-          </View>
-          <Text style={styles.textoPrincipal}>Transferencias a Otras Personas </Text>
+      
+          <MenuOptions navigation={navigation} name="Transferencias a Otras Personas" />
+
         </View>
   );
 };

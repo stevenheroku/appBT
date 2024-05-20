@@ -1,8 +1,9 @@
 import React from 'react';
-import {KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {OpcionesCuentas} from '../../components/CuentasCliente/OpcionesCuentas';
 import { TextInput } from 'react-native-gesture-handler';
+import MenuOptions from '../../components/MenuOpciones/MenuOptions';
 
 export const TransferenciasPropias = ({navigation}: any) => {
   const handlePress = () => {
@@ -10,6 +11,8 @@ export const TransferenciasPropias = ({navigation}: any) => {
     navigation.openDrawer();
   };
   return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#383838' }}>
+
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       style={{ flex: 1 }}
@@ -19,17 +22,8 @@ export const TransferenciasPropias = ({navigation}: any) => {
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.container}>
-          <View style={styles.menu}>
-            <TouchableOpacity
-              activeOpacity={0.5}
-              onPress={() => navigation.goBack()}
-            >
-              <Icon name="backspace-outline" size={30} color="#51AAA2" />
-            </TouchableOpacity>
-            <View>
-              <Text style={styles.title}>Transferencia a cuentas propias</Text>
-            </View>
-          </View>
+        <MenuOptions navigation={navigation} name="Transferencias a cuentas propias" />
+
           <View style={{ padding: 30 }}>
             <Text style={styles.texto}>Producto Origen</Text>
             <View style={styles.productoOrigen}>
@@ -59,6 +53,7 @@ export const TransferenciasPropias = ({navigation}: any) => {
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
@@ -95,6 +90,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#ffffff',
     textAlign: 'center',
+    alignItems:'center',
     fontSize: 15,
     fontWeight: 'bold',
     top: -3,

@@ -10,6 +10,7 @@ import {
     View,
   } from 'react-native';
   import Icon from 'react-native-vector-icons/Ionicons';
+import MenuOptions from '../../components/MenuOpciones/MenuOptions';
   
   export const TarjetaDebito = ({navigation}: any) => {
     const handlePress = () => {
@@ -19,16 +20,7 @@ import {
     return (
     
           <View style={styles.container}>
-            <View style={styles.menu}>
-              <TouchableOpacity
-                activeOpacity={0.5}
-                onPress={() => navigation.goBack()}>
-                <Icon name="backspace-outline" size={30} color="#51AAA2" />
-              </TouchableOpacity>
-              <View>
-              </View>
-            </View>
-            <Text style={styles.textoPrincipal}>Tarjeta de Débito </Text>
+          <MenuOptions navigation={navigation} name="Tarjeta de Débito" />
           </View>
     );
   };

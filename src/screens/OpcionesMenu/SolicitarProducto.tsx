@@ -2,6 +2,7 @@
 import {
   KeyboardAvoidingView,
   Platform,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import MenuOptions from '../../components/MenuOpciones/MenuOptions';
 
 export const SolicitarProducto = ({navigation}: any) => {
   const handlePress = () => {
@@ -16,19 +18,11 @@ export const SolicitarProducto = ({navigation}: any) => {
     navigation.openDrawer();
   };
   return (
-  
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#383838' }}>
         <View style={styles.container}>
-          <View style={styles.menu}>
-            <TouchableOpacity
-              activeOpacity={0.5}
-              onPress={() => navigation.goBack()}>
-              <Icon name="backspace-outline" size={30} color="#51AAA2" />
-            </TouchableOpacity>
-            <View>
-            </View>
-          </View>
-          <Text style={styles.textoPrincipal}>Solicitar Producto </Text>
+        <MenuOptions navigation={navigation} name="Solicitar Producto" />
         </View>
+        </SafeAreaView>
   );
 };
 

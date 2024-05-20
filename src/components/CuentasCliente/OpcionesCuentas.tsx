@@ -3,11 +3,12 @@ import { FlatList, StyleSheet, Text, View, Modal, TouchableOpacity } from 'react
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { ModalPagarTarjetas } from '../../screens/ModalOpcionesCuenta/ModalSeleccionPagoTC';
+import { ModalTransferir } from '../../screens/ModalOpcionesCuenta/ModalTrasnferir';
 
 
 
 const opcionesData = [
-  { id: '1', title: 'Transferir', icon: 'swap-horizontal-outline', color: '#1DB4A9', screen: 'Transferir', type: 'screen' },
+  { id: '1', title: 'Transferir', icon: 'swap-horizontal-outline', color: '#1DB4A9', screen: 'Transferir', type: 'modal' },
   { id: '2', title: 'Pagar', icon: 'card-outline', color: '#EF156B', screen: 'PagosTarjeta',type: 'screen'},
   { id: '3', title: 'Ahorro por consumo', icon: 'people-outline', color: '#D5D5D5', screen: 'AhorroPorConsumo',type: 'modal' },
   { id: '4', title: 'Retirar', icon: 'phone-portrait-outline', color: '#EBD54C', screen: 'Retirar',type: 'modal'  },
@@ -64,6 +65,9 @@ const OpcionItem = ({ navigation, title, icon, colores, screen, type,route }: an
       )}
       {type === 'modal' && screen==='AhorroPorConsumo'&&(
          <ModalPagarTarjetas visible={modalVisible} onClose={closeModal} navigation={navigation}/>
+      )}
+      {type === 'modal' && screen==='Transferir'&&(
+         <ModalTransferir visible={modalVisible} onClose={closeModal} navigation={navigation}/>
       )}
     </View>
   );

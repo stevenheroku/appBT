@@ -184,9 +184,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontWeight:'bold'
   },
+
   item: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: 'row', // Mantiene los elementos en línea horizontal
+    alignItems: 'center', // Centra los elementos verticalmente
+    justifyContent: 'space-between', // Distribuye el espacio entre los elementos
     padding: 20,
     borderBottomWidth: 1.5,
     borderBottomColor: 'white', // Línea divisoria blanca

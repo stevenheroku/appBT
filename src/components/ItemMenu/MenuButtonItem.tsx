@@ -59,13 +59,6 @@ const DATA = [
     icono: 'videocam-outline',
     type: 'monetaria',
     direction: 'Tutoriales',
-  },
-  {
-    id: '9',
-    title: 'Tutoriales',
-    icono: 'videocam-outline',
-    type: 'monetaria',
-    direction: 'Tutoriales',
   }
 ];
 
