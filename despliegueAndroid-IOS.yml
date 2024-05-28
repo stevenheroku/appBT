@@ -1,0 +1,64 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'macOS-latest'
+
+variables:
+- group: variablesGroup
+
+jobs:
+- job: Build_iOS
+  displayName: 'Build iOS'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'
+  - script: |
+      npm install -g yarn
+      yarn install
+      cd ios
+      pod install
+    displayName: 'Install dependencies'
+
+  - task: InstallAppleCertificate@2
+    inputs:
+      certSecureFile: 'ios_distribution.p12'
+      certPwd: '$(iosP12Password)'
+
+  - script: |
+      xcodebuild -scheme $(iosScheme) -configuration $(iosConfiguration) -workspace ios/YourApp.xcworkspace -archivePath $(buildDir)/ios/YourApp.xcarchive archive
+      xcodebuild -exportArchive -archivePath $(buildDir)/ios/YourApp.xcarchive -exportOptionsPlist ios/exportOptions.plist -exportPath $(buildDir)/ios
+    displayName: 'Build iOS'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(buildDir)/ios'
+      ArtifactName: 'iosBuild'
+      publishLocation: 'Container'
+
+- job: Build_Android
+  displayName: 'Build Android'
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+      addToPath: true
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'
+  - script: |
+      npm install -g yarn
+      yarn install
+    displayName: 'Install dependencies'
+
+  - script: |
+      cd android
+      ./gradlew assembleRelease
+    displayName: 'Build Android'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(buildDir)/android/app/build/outputs/apk/release/'
+      ArtifactName: 'androidBuild'
+      publishLocation: 'Container'
